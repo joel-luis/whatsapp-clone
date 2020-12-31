@@ -11,6 +11,7 @@ export const Container = styled.div`
     flex: 1;
     background-color: #fff;
     overflow-y: auto;
+    width: 100%;
   }
 
   .chatlist::-webkit-scrollbar {

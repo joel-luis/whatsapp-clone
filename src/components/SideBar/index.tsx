@@ -4,28 +4,43 @@ import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import ChatListItem from '../ChatListItem';
+import NewChat from '../NewChat';
 
 import { Container, Header, Search, Avatar, HeaderButtons } from './styles';
 
-const SideBar: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [chatlist, setChatlist] = useState([{}, {}, {}, {}, {}, {}, {}, {}]);
+interface List {
+  chatId: number;
+  title: string;
+  image: string;
+}
+interface Props {
+  chatList: List[];
+  onClick: Function;
+  avatar: string;
+}
+
+const SideBar: React.FC<Props> = (props: Props) => {
+  const { chatList, onClick, avatar } = props;
+
+  const [showNewChat, setShowNewChat] = useState(false);
+
+  const handleNewChat = () => {
+    setShowNewChat(true);
+  };
 
   return (
     <Container>
+      <NewChat show={showNewChat} setShow={setShowNewChat} />
       <Header>
         <Avatar>
-          <img
-            src="https://image.flaticon.com/icons/png/512/194/194938.png"
-            alt=""
-          />
+          <img src={avatar} alt="" />
         </Avatar>
         <HeaderButtons>
           <div className="header-icon">
             <DonutLargeIcon />
           </div>
           <div className="header-icon">
-            <ChatIcon />
+            <ChatIcon onClick={handleNewChat} />
           </div>
           <div className="header-icon">
             <MoreVertIcon />
@@ -44,9 +59,8 @@ const SideBar: React.FC = () => {
       </Search>
 
       <div className="chatlist">
-        {chatlist.map((item, key) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <ChatListItem key={key} />
+        {chatList?.map((item, key) => (
+          <ChatListItem id={key} onClick={onClick} item={item} />
         ))}
       </div>
     </Container>

@@ -10,7 +10,6 @@ export const Container = styled.div`
     background-color: #f5f5f5;
   }
 `;
-
 export const Avatar = styled.div`
   cursor: pointer;
   > img {
