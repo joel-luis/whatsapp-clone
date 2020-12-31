@@ -21,7 +21,7 @@ const ChatIntro: React.FC = () => {
         <LaptopMacIcon font-size="small" style={{ color: '#919191' }} />
         <p>
           O WhatsApp está disponível para Mac.
-          <a href="https://www.whatsapp.com/download"> Obtenha aqui.</a>
+          <a href="https://www.whatsapp.com/download"> Obtenha-o aqui.</a>
         </p>
       </div>
     </Container>

@@ -10,29 +10,39 @@ import {
   LastMsg,
 } from './styles';
 
-const ChatListItem: React.FC = () => {
+interface List {
+  chatId: number;
+  title: string;
+  image: string;
+}
+interface Props {
+  onClick: Function;
+  id: string | number;
+  item: List;
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+function ChatListItem(props: Props) {
+  const { item, onClick, id } = props;
   return (
-    <Container>
+    <Container onClick={() => onClick(id)}>
       <Avatar>
-        <img
-          src="https://image.flaticon.com/icons/png/512/194/194938.png"
-          alt=""
-        />
+        <img src={item?.image} alt="" />
       </Avatar>
       <ChatListLines>
         <ChatListLine>
-          <Name>Joel Luis</Name>
+          <Name>{item?.title}</Name>
           <HourMsg>19:00</HourMsg>
         </ChatListLine>
 
         <ChatListLine>
           <LastMsg>
-            <p>Clone WhatsApp com ReactJs e Typescript.</p>
+            <p>Clone WhatsApp por Joel com ReactJs e Typescript.</p>
           </LastMsg>
         </ChatListLine>
       </ChatListLines>
     </Container>
   );
-};
+}
 
 export default ChatListItem;
