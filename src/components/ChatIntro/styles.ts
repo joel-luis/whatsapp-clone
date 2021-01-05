@@ -4,12 +4,12 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   flex: 1;
-  background: #f8f9fa;
+  background: var(--primary-intro);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 6px solid #4adf83;
+  border-bottom: 6px solid #116062;
 
   > img {
     width: 250px;
@@ -18,14 +18,14 @@ export const Container = styled.div`
 
   > h1 {
     font-size: 32px;
-    color: #525252;
+    color: var(--texth1);
     font-weight: normal;
     margin-top: 30px;
   }
 
   > h2 {
     font-size: 14px;
-    color: #777;
+    color: var(--texth2);
     font-weight: normal;
     margin-top: 20px;
     line-height: 20px;
@@ -37,15 +37,15 @@ export const Container = styled.div`
     margin-top: 55px;
 
     p {
-      color: #919191;
+      color: var(--p);
       font-size: 14px;
-      margin-left: 10px;
+      margin-left: 7px;
     }
 
     a {
       text-decoration: none;
       font-weight: normal;
-      color: #07bc4c;
+      color: #00af9c;
     }
   }
 `;

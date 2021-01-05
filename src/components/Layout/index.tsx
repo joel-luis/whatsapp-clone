@@ -1,45 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SideBar from '../SideBar';
 import ChatWindow from '../ChatWindow';
 import ChatIntro from '../ChatIntro';
 import { Container } from './styles';
-
-interface List {
-  chatId: number;
-  title: string;
-  image: string;
-}
+import Login from '../Login';
+import Api from '../Api/api';
+import { List } from '../../types/users';
 
 const Layout: React.FC = () => {
+  const [chatList, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState<List | null>(null);
-  const [user, setUser] = useState({
-    id: 1234,
-    avatar: 'https://image.flaticon.com/icons/png/512/194/194938.png',
-    name: 'Joel 123',
-  });
+  const [user, setUser] = useState(null);
 
-  const chatList = [
-    {
-      chatId: 1,
-      title: 'Joel Luis',
-      image: 'https://image.flaticon.com/icons/png/512/194/194938.png',
-    },
-    {
-      chatId: 2,
-      title: 'Yasmin Felix',
-      image: 'https://image.flaticon.com/icons/png/512/194/194938.png',
-    },
-    {
-      chatId: 3,
-      title: 'Joel Trabalho',
-      image: 'https://image.flaticon.com/icons/png/512/194/194938.png',
-    },
-    {
-      chatId: 4,
-      title: 'Joel Escritorio',
-      image: 'https://image.flaticon.com/icons/png/512/194/194938.png',
-    },
-  ];
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (user !== null) {
+      const unsub = Api.onChatList(user.id, setChatList);
+      return unsub;
+    }
+  }, [user]);
+
+  const handleLoginData = async u => {
+    const newUser = {
+      id: u.uid,
+      name: u.displayName,
+      avatar: u.photoURL,
+    };
+    await Api.addUser(newUser);
+    setUser(newUser);
+  };
+
+  if (user === null) {
+    return <Login onReceive={handleLoginData} />;
+  }
 
   const openChat = (key: number) => {
     setActiveChat(chatList[key]);
@@ -47,9 +40,11 @@ const Layout: React.FC = () => {
 
   return (
     <Container>
-      <SideBar avatar={user?.avatar} chatList={chatList} onClick={openChat} />
+      <SideBar user={user} chatList={chatList} onClick={openChat} />
       <div className="contentArea">
-        {activeChat?.chatId !== undefined && <ChatWindow user={user} />}
+        {activeChat?.chatId !== undefined && (
+          <ChatWindow user={user} data={activeChat} />
+        )}
         {activeChat?.chatId === undefined && <ChatIntro />}
       </div>
     </Container>

@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 35%;
+  width: 55%;
   max-width: 415px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid var(--border);
 
   .chatlist {
     flex: 1;
-    background-color: #fff;
+    background-color: var(--sidebar);
     overflow-y: auto;
     width: 100%;
   }
@@ -17,14 +17,17 @@ export const Container = styled.div`
   .chatlist::-webkit-scrollbar {
     width: 6px;
     height: 6px;
+    z-index: 1;
   }
 
   .chatlist::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--scrollbar);
+    z-index: 1;
   }
 `;
 
 export const Header = styled.div`
+  background-color: var(--header);
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -47,7 +50,7 @@ export const HeaderButtons = styled.div`
 
   .header-icon {
     display: flex;
-    color: #919191;
+    color: var(--icons);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -58,12 +61,12 @@ export const HeaderButtons = styled.div`
 `;
 
 export const Search = styled.div`
-  background-color: #f6f6f6;
-  border-bottom: 1px solid #eee;
+  background-color: var(--sidebar);
+  border-bottom: 1px solid var(--border);
   padding: 10px 15px;
 
   .search-input {
-    background-color: #fff;
+    background-color: var(--input);
     height: 40px;
     border-radius: 20px;
     display: flex;
@@ -76,10 +79,11 @@ export const Search = styled.div`
     border: 0;
     outline: 0;
     background-color: transparent;
-    margin-left: 10px;
+    margin-left: 5px;
+    color: var(--textInput);
 
     &::placeholder {
-      color: #4a4a4a;
+      color: var(--textInput);
     }
   }
 `;

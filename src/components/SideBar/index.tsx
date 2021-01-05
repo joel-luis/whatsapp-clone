@@ -5,22 +5,17 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import ChatListItem from '../ChatListItem';
 import NewChat from '../NewChat';
-
+import { User, List } from '../../types/users';
 import { Container, Header, Search, Avatar, HeaderButtons } from './styles';
 
-interface List {
-  chatId: number;
-  title: string;
-  image: string;
-}
 interface Props {
   chatList: List[];
   onClick: Function;
-  avatar: string;
+  user: User;
 }
 
 const SideBar: React.FC<Props> = (props: Props) => {
-  const { chatList, onClick, avatar } = props;
+  const { chatList, onClick, user } = props;
 
   const [showNewChat, setShowNewChat] = useState(false);
 
@@ -30,10 +25,10 @@ const SideBar: React.FC<Props> = (props: Props) => {
 
   return (
     <Container>
-      <NewChat show={showNewChat} setShow={setShowNewChat} />
+      <NewChat user={user} show={showNewChat} setShow={setShowNewChat} />
       <Header>
         <Avatar>
-          <img src={avatar} alt="" />
+          <img src={user?.avatar} alt="" />
         </Avatar>
         <HeaderButtons>
           <div className="header-icon">
@@ -50,7 +45,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
 
       <Search>
         <div className="search-input">
-          <SearchIcon font-size="small" style={{ color: '#919191' }} />
+          <SearchIcon font-size="small" style={{ color: '#b0b3b8' }} />
           <input
             type="search"
             placeholder="Procurar ou começar uma nova conversa"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   Container,
@@ -9,21 +9,29 @@ import {
   HourMsg,
   LastMsg,
 } from './styles';
+import { List } from '../../types/users';
 
-interface List {
-  chatId: number;
-  title: string;
-  image: string;
-}
 interface Props {
   onClick: Function;
   id: string | number;
   item: List;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function ChatListItem(props: Props) {
+const ChatListItem: React.FC<Props> = (props: Props) => {
   const { item, onClick, id } = props;
+  const [time, setTime] = useState('');
+
+  useEffect(() => {
+    if (item?.lastMessageDate?.seconds > 0) {
+      const d = new Date(item?.lastMessageDate?.seconds * 1000);
+      let hours = d.getHours();
+      let minutes = d.getMinutes();
+      hours = Number(hours < 10 ? `0${hours}` : hours);
+      minutes = Number(minutes < 10 ? `0${minutes}` : minutes);
+      setTime(`${hours}:${minutes}`);
+    }
+  }, [item]);
+
   return (
     <Container onClick={() => onClick(id)}>
       <Avatar>
@@ -32,17 +40,17 @@ function ChatListItem(props: Props) {
       <ChatListLines>
         <ChatListLine>
           <Name>{item?.title}</Name>
-          <HourMsg>19:00</HourMsg>
+          <HourMsg>{time}</HourMsg>
         </ChatListLine>
 
         <ChatListLine>
           <LastMsg>
-            <p>Clone WhatsApp por Joel com ReactJs e Typescript.</p>
+            <p>{item?.lastMessage}</p>
           </LastMsg>
         </ChatListLine>
       </ChatListLines>
     </Container>
   );
-}
+};
 
 export default ChatListItem;

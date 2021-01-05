@@ -8,20 +8,20 @@ export const Container = styled.div`
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: #fff;
+  background-color: var(--sidebar);
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid var(--border);
   transition: all ease 0.5s;
 `;
 export const Header = styled.div`
   display: flex;
-  background-color: #00bfa5;
+  background-color: var(--newchat);
   align-items: center;
-  padding: 60px 15px 15px 15px;
+  padding: 50px 15px 15px 15px;
 `;
 export const BackIcon = styled(ArrowBackIcon)`
-  color: #fff;
+  color: var(--texth2);
   width: 40px;
   height: 40px;
   display: flex;
@@ -30,7 +30,7 @@ export const BackIcon = styled(ArrowBackIcon)`
   cursor: pointer;
 `;
 export const HeaderTitle = styled.div`
-  color: #fff;
+  color: var(--texth2);
   font-size: 19px;
   line-height: 40px;
   flex: 1;
@@ -57,7 +57,7 @@ export const NewChatList = styled.div`
   }
 
   .newChat-item:hover {
-    background-color: #f5f5f5;
+    background-color: var(--chathover);
   }
 
   .newChat-itemavatar {
@@ -69,6 +69,34 @@ export const NewChatList = styled.div`
 
   .newChat-itemname {
     font-size: 17px;
-    color: #000;
+    color: var(--chattext);
+  }
+`;
+
+export const Search = styled.div`
+  background-color: var(--sidebar);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 15px;
+
+  .search-input {
+    background-color: var(--input);
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .search-input input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    margin-left: 5px;
+    color: var(--textInput);
+
+    &::placeholder {
+      color: var(--textInput);
+    }
   }
 `;

@@ -7,7 +7,7 @@ export const Container = styled.div`
   height: 72px;
 
   &:hover {
-    background-color: #f5f5f5;
+    background-color: var(--chathover);
   }
 `;
 export const Avatar = styled.div`
@@ -24,7 +24,7 @@ export const ChatListLines = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border);
   padding: 15px;
   margin-left: 15px;
 
@@ -39,16 +39,16 @@ export const ChatListLine = styled.div`
 `;
 export const Name = styled.div`
   font-size: 16px;
-  color: #000;
+  color: var(--chattext);
   margin-bottom: 2px;
 `;
 export const HourMsg = styled.div`
   font-size: 12px;
-  color: #999;
+  color: var(--p);
 `;
 export const LastMsg = styled.div`
   font-size: 14px;
-  color: #999;
+  color: var(--chattext);
   display: flex;
   width: 100%;
 
@@ -57,5 +57,7 @@ export const LastMsg = styled.div`
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 0;
+    font-weight: lighter;
+    margin-top: 5px;
   }
 `;

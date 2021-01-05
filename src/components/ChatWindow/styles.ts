@@ -23,22 +23,28 @@ export const Container = styled.div`
 
   aside.emoji-picker-react {
     width: 100%;
-    background: #f0f0f0;
+    background: var(--header);
+    border: none;
+    outline: 0;
+  }
+
+  .emoji-picker-react .emoji-categories {
+    color: var(--textInput);
   }
 
   .emoji-picker-react .emoji-group:before {
-    background: #e6e6e6;
-    color: #989898;
+    background: var(--input);
+    color: var(--textInput);
     padding-left: 15px;
     font-weight: normal;
-    border-radius: 5px;
     font-size: 12px;
   }
 `;
 
 export const Header = styled.div`
+  background-color: var(--header);
   height: 60px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,26 +67,25 @@ export const Avatar = styled.div`
 `;
 export const Name = styled.div`
   font-size: 17px;
-  color: #000;
+  color: var(--chattext);
 `;
 
 export const Body = styled.div`
-  z-index: 1;
   overflow-y: auto;
   height: 90vh;
-  background-color: #e5ddd5;
-  background-size: 65%;
+  background-color: var(--bodybg);
   background-position: center;
-  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
   padding-bottom: 70px;
+  background-image: url('https://wallpaperaccess.com/full/2224368.png');
+  background-size: 50%;
 
-  .ChatWindowBody::-webkit-scrollbar {
+  .Chatbody::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
-  .ChatWindowBody::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+  .Chatbody::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar);
   }
 `;
 export const Footer = styled.div`
@@ -88,7 +93,7 @@ export const Footer = styled.div`
   width: 68%;
   position: fixed;
   bottom: 0;
-  background-color: #f6f6f6;
+  background-color: var(--header);
   display: flex;
   align-items: center;
 `;
@@ -106,11 +111,15 @@ export const ChatWindownInputArea = styled.div`
     height: 40px;
     border: 0;
     outline: 0;
-    background: #fff;
+    background: var(--input);
     border-radius: 20px;
     font-size: 15px;
-    color: #4a4a4a;
+    color: var(--textInput);
     padding-left: 15px;
+
+    &::placeholder {
+      color: var(--textInput);
+    }
   }
 `;
 
@@ -120,7 +129,7 @@ export const ChatWindownPos = styled.div`
 
 const iconCSS = css`
   display: flex;
-  color: #919191;
+  color: var(--icons);
   width: 40px;
   height: 40px;
   border-radius: 50%;
