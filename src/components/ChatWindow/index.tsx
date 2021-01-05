@@ -50,6 +50,7 @@ const ChatWindow: React.FC<Props> = (props: Props) => {
     setList([]);
     const unsub = Api.onChatContent(data.chatId, setList, setUsers);
     return unsub;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
