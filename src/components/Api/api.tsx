@@ -77,16 +77,16 @@ export default {
         if (doc.exists) {
           const data = doc.data();
           if (data.chats) {
-            // const chats = [...data.chats];
-            // chats.sort((a, b) => {
-            //   if (a.lastMessageDate === undefined) {
-            //     return -1;
-            //   }
-            //   if (a.lastMessageDate.seconds < b.lastMessageDate.seconds) {
-            //     return 1;
-            //   }
-            //   return -1;
-            // });
+            const chats = [...data.chats];
+            chats.sort((a, b) => {
+              if (a.lastMessageDate === undefined) {
+                return -1;
+              }
+              if (a.lastMessageDate.seconds < b.lastMessageDate.seconds) {
+                return 1;
+              }
+              return -1;
+            });
             setChatList(data.chats);
           }
         }
