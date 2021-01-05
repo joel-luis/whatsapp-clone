@@ -4,6 +4,7 @@ import { Container } from './styles';
 import Api from '../Api/api';
 
 interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onReceive: (user: any) => void;
 }
 
@@ -14,6 +15,7 @@ const Login: React.FC<Props> = (props: Props) => {
     if (result) {
       props.onReceive(result?.user);
     } else {
+      // eslint-disable-next-line no-alert
       alert('Erro');
     }
   };
